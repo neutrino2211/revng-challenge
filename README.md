@@ -1,5 +1,6 @@
 # revng-challenge
 
+[Example Image](docs/out.png)
 
 ## Usage
 
