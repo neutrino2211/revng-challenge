@@ -1,6 +1,6 @@
 # revng-challenge
 
-[Example Image](docs/out.png)
+![Example Image](docs/out.png)
 
 ## Usage
 
