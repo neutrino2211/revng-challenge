@@ -18,7 +18,7 @@ digraph {0} {{
 '''.format(name)
   
   for commit in commits:
-    commit_message = commit['commit']['message'].replace("\n", " ")
+    commit_message = commit['commit']['message'].replace("\n", " ").replace("\"", "'")
     content += f" n{commit['sha']} [label=\"{commit['sha']}\" URL=\"{commit['url']}\" tooltip=\"{commit_message}\"];\n"
 
   for commit in commits:
@@ -39,8 +39,8 @@ def is_acyclic(commits: List[Commit]) -> bool:
   
   for commit in commits:
     for p in commit['parents']:
-      assert p['sha'] in indices_dict, "Reached commit history cut-off"
-      g.addEdge(indices_dict[commit['sha']], indices_dict[p['sha']])
+      if p['sha'] in indices_dict:
+        g.addEdge(indices_dict[commit['sha']], indices_dict[p['sha']])
 
   return g.topologicalSort()
 
